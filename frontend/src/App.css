@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'PoiretOne';
+  src: url('/src/assets/fonts/poiretOne/PoiretOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProstoOne';
+  src: url('/src/assets/fonts/prostoOne/ProstoOne-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CSS Variables for themes */
+@layer base {
+  /* Light Mode Default */
+  :root {
+    /* Neutral colors - Light Mode */
+    --background: #ffffff;
+    --background-subtle: #f8f9fa;
+    --background-hover: #f1f3f5;
+    --text: #212529;
+    --text-muted: #6c757d;
+    --border: #dee2e6;
+    --background-hero: #fff6f6; /* Light blue for hero sections */
+    --card-text: #d1d1d1; /* Default text color for cards */
+    
+    /* Theme Colors - Light Mode (Default Green) */
+    --primary-darkest: #14532d;
+    --primary-base: #22c55e;
+    --primary-lightest: #dcfce7;
+    --secondary-darkest: #02411a;
+    --secondary-base: #218144;
+    --secondary-lightest: #09ec59;
+  }
+
+  /* Dark Mode - Stays within color scheme character */
+  .dark {
+    /* Neutral colors - Dark Mode (warm/gray based on scheme) */
+    --background: #0f0f12;
+    --background-subtle: #1a1a1f;
+    --background-hover: #25252d;
+    --text: #e9ecef;
+    --text-muted: #9ca3af;
+    --border: #2a2a33;
+    --background-hero: #111010; /* Darker gray for hero sections */
+    --card-text: #e2e3e6; /* Muted text color for cards in dark mode */
+
+  }
+
+  /* ========== RED THEME ========== */
+  .theme-red {
+    --primary-darkest: #991b1b;
+    --primary-base: #f55656;
+    --primary-lightest: #fee2e2;
+    --secondary-darkest: #7f1d1d;
+    --secondary-base: #ef4444;
+    --secondary-lightest: #f77272;
+
+  }
+  .dark.theme-red {
+    --background: #0f0a0a;
+    --background-subtle: #460101;
+    --background-hover: #531f1f;
+    --border: #331a1a;
+    --primary-darkest: #7f1d1d;
+    --primary-base: #da1111;
+    --primary-lightest: #fca5a5;
+    --secondary-darkest: #450a0a;
+    --secondary-base: #dc2626;
+    --secondary-lightest: #f55b5b;
+  }
+
+  /* ========== BLUE THEME ========== */
+  .theme-blue {
+    --primary-darkest: #002ca7;
+    --primary-base: #2779fd;
+    --primary-lightest: #c6daf5;
+    --secondary-darkest: #031f7e;
+    --secondary-base: #185aac;
+    --secondary-lightest: #2281f5;
+  }
+  .dark.theme-blue {
+    --background: #0a0f1a;
+    --background-subtle: #010e30;
+    --background-hover: #0f1a36;
+    --border: #1a2340;
+    --primary-darkest: #1e3a8a;
+    --primary-base: #60a5fa;
+    --primary-lightest: #93c5fd;
+    --secondary-darkest: #172554;
+    --secondary-base: #3b82f6;
+    --secondary-lightest: #bfdbfe;
+  }
+
+  /* ========== GREEN THEME ========== */
+  .theme-green {
+    --primary-darkest: #14532d;
+    --primary-base: #22c55e;
+    --primary-lightest: #dcfce7;
+    --secondary-darkest: #02411a;
+    --secondary-base: #218144;
+    --secondary-lightest: #09ec59;
+  }
+  .dark.theme-green {
+    --background: #0a120a;
+    --background-subtle: #0f1a0f;
+    --background-hover: #152315;
+    --border: #1a2e1a;
+    --primary-darkest: #14532d;
+    --primary-base: #4ade80;
+    --primary-lightest: #86efac;
+    --secondary-darkest: #052e16;
+    --secondary-base: #22c55e;
+    --secondary-lightest: #bbf7d0;
+  }
+
+  /* ========== YELLOW THEME ========== */
+  .theme-yellow {
+    --primary-darkest: #713f12;
+    --primary-base: #c59503;
+    --primary-lightest: #ebdb31;
+    --secondary-darkest: #854d0e;
+    --secondary-base: #8a6f05;
+    --secondary-lightest: #e9e502;
+  }
+  .dark.theme-yellow {
+    --background: #120f0a;
+    --background-subtle: #462a00;
+    --background-hover: #4b361b;
+    --border: #332818;
+    --primary-darkest: #713f12;
+    --primary-base: #dfbd01;
+    --primary-lightest: #fde047;
+    --secondary-darkest: #422006;
+    --secondary-base: #eab308;
+    --secondary-lightest: #fef08a;
+  }
+
+  /* ========== ORANGE THEME ========== */
+  .theme-orange {
+    --primary-darkest: #802104;
+    --primary-base: #ff3300;
+    --primary-lightest: #ffedd5;
+    --secondary-darkest: #9a3412;
+    --secondary-base: #d66000;
+    --secondary-lightest: #fed7aa;
+  }
+  .dark.theme-orange {
+    --background: #120b0a;
+    --background-subtle: #5f0c04;
+    --background-hover: #ff1100;
+    --border: #331c18;
+    --primary-darkest: #7c2d12;
+    --primary-base: #d15e00;
+    --primary-lightest: #fdba74;
+    --secondary-darkest: #431407;
+    --secondary-base: #f97316;
+    --secondary-lightest: #fed7aa;
+  }
+
+  /* ========== PURPLE THEME ========== */
+  .theme-purple {
+    --primary-darkest: #4c1d95;
+    --primary-base: #b879f3;
+    --primary-lightest: #f3e8ff;
+    --secondary-darkest: #6b21a8;
+    --secondary-base: #c084fc;
+    --secondary-lightest: #b881f3;
+  }
+  .dark.theme-purple {
+    --background: #0c0a12;
+    --background-subtle: #220738;
+    --background-hover: #301744;
+    --border: #201a30;
+    --primary-darkest: #4c1d95;
+    --primary-base: #c084fc;
+    --primary-lightest: #d8b4fe;
+    --secondary-darkest: #2e1065;
+    --secondary-base: #a855f7;
+    --secondary-lightest: #e9d5ff;
+  }
+
+  /* ========== BLACK/GRAY THEME ========== */
+  .theme-black {
+    --primary-darkest: #111827;
+    --primary-base: #b3b7be;
+    --primary-lightest: #bebebe;
+    --secondary-darkest: #1f2937;
+    --secondary-base: #4b5563;
+    --secondary-lightest: #939494;
+  }
+  .dark.theme-black {
+    --background: #0a0a0a;
+    --background-subtle: #141414;
+    --background-hover: #1f1f1f;
+    --border: #2a2a2a;
+    --primary-darkest: #000000;
+    --primary-base: #4a4a4a;
+    --primary-lightest: #9ca3af;
+    --secondary-darkest: #1a1a1a;
+    --secondary-base: #6b7280;
+    --secondary-lightest: #d1d5db;
+  }
+}
+
+/* Connect CSS variables to Tailwind */
+@theme {
+  --color-background: var(--background);
+  --color-background-subtle: var(--background-subtle);
+  --color-background-hero: var(--background-hero);
+  --color-background-hover: var(--background-hover);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-card-text: var(--card-text);
+  
+  /* Theme color layers */
+  --color-primary-darkest: var(--primary-darkest);
+  --color-primary: var(--primary-base);
+  --color-primary-lightest: var(--primary-lightest);
+  --color-secondary-darkest: var(--secondary-darkest);
+  --color-secondary: var(--secondary-base);
+  --color-secondary-lightest: var(--secondary-lightest);
+  --color-hero: var(--hero);
+  --color-hero-lightest: var(--hero-lightest);
+  --color-hero-darkest: var(--hero-darkest);
+}
+
+/* 3D Card Flip Styles */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+body {
+  margin: 0;
+  font-family: 'ProstoOne', sans-serif;
+}
