@@ -1,0 +1,45 @@
+service: wealthsmart-backend
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  timeout: 30
+  memorySize: 256
+  environment:
+    # Database (PostgreSQL connection to Supabase)
+    DATABASE_URL: ${env:DATABASE_URL}
+    
+    # JWT - using your actual secret names
+    JWT_ACCESS_SECRET: ${env:JWT_ACCESS_SECRET}
+    JWT_REFRESH_SECRET: ${env:JWT_REFRESH_SECRET}
+    
+    # S3 for file uploads
+    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME}
+    
+    # Email (Brevo SMTP)
+    BREVO_SMTP_USER: ${env:BREVO_SMTP_USER}
+    BREVO_SMTP_PASS: ${env:BREVO_SMTP_PASS}
+    BREVO_FROM_EMAIL: ${env:BREVO_FROM_EMAIL}
+    
+    # Frontend (will update after deployment)
+    FRONTEND_URL: ${env:FRONTEND_URL}
+    
+    # Node environment
+    NODE_ENV: production
+  iam:
+    role: arn:aws:iam::800417964439:role/wealthsmart-lambda-role
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - httpApi:
+          method: ANY
+          path: /{proxy+}
+
+outputs:
+  ApiEndpoint:
+    description: "API Gateway endpoint URL"
+    value:
+      Fn::GetAtt: [HttpApi, ApiEndpoint]

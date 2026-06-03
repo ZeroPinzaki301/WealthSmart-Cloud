@@ -1,0 +1,132 @@
+{
+  "C:\\Users\\aleja\\OneDrive\\Desktop\\backendWealthSmart\\serverless.yml": {
+    "versionFramework": "4.36.1",
+    "servicePath": "C:\\Users\\aleja\\OneDrive\\Desktop\\backendWealthSmart\\serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "wealthsmart-backend",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs20.x",
+        "region": "us-east-1",
+        "timeout": 30,
+        "memorySize": 256,
+        "environment": {
+          "DATABASE_URL": "postgresql://postgres.jtudcsesvzujxtybidjr:POSTERzaki301@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres",
+          "JWT_ACCESS_SECRET": "<REDACTED>",
+          "JWT_REFRESH_SECRET": "<REDACTED>",
+          "S3_BUCKET_NAME": "wealthsmart-uploads-800417964439-us-east-1-an",
+          "BREVO_SMTP_USER": "acad93001@smtp-brevo.com",
+          "BREVO_SMTP_PASS": "xsmtpsib-415f09f07ad634fa0a5e7247f3ec0564e15080c740d3549a9ac9e82a4bb47cfe-6c4xwxBavZ4n08XL",
+          "BREVO_FROM_EMAIL": "wealthsmartteam@gmail.com",
+          "FRONTEND_URL": "http://localhost:5173",
+          "NODE_ENV": "production"
+        },
+        "iam": {
+          "role": "arn:aws:iam::800417964439:role/wealthsmart-lambda-role"
+        },
+        "stage": "dev",
+        "versionFunctions": true
+      },
+      "functions": {
+        "api": {
+          "handler": "lambda.handler",
+          "events": [
+            {
+              "httpApi": {
+                "method": "ANY",
+                "path": "/{proxy+}"
+              },
+              "resolvedMethod": "ANY",
+              "resolvedPath": "/{proxy+}"
+            }
+          ],
+          "name": "wealthsmart-backend-dev-api"
+        }
+      },
+      "outputs": {
+        "ApiEndpoint": {
+          "description": "API Gateway endpoint URL",
+          "value": {
+            "Fn::GetAtt": [
+              "HttpApi",
+              "ApiEndpoint"
+            ]
+          }
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs20.x",
+      "region": "us-east-1",
+      "timeout": 30,
+      "memorySize": 256,
+      "environment": {
+        "DATABASE_URL": "postgresql://postgres.jtudcsesvzujxtybidjr:POSTERzaki301@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres",
+        "JWT_ACCESS_SECRET": "<REDACTED>",
+        "JWT_REFRESH_SECRET": "<REDACTED>",
+        "S3_BUCKET_NAME": "wealthsmart-uploads-800417964439-us-east-1-an",
+        "BREVO_SMTP_USER": "acad93001@smtp-brevo.com",
+        "BREVO_SMTP_PASS": "xsmtpsib-415f09f07ad634fa0a5e7247f3ec0564e15080c740d3549a9ac9e82a4bb47cfe-6c4xwxBavZ4n08XL",
+        "BREVO_FROM_EMAIL": "wealthsmartteam@gmail.com",
+        "FRONTEND_URL": "http://localhost:5173",
+        "NODE_ENV": "production"
+      },
+      "iam": {
+        "role": "arn:aws:iam::800417964439:role/wealthsmart-lambda-role"
+      },
+      "stage": "dev",
+      "versionFunctions": true
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "serviceRawFile": "service: wealthsmart-backend\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs20.x\r\n  region: us-east-1\r\n  timeout: 30\r\n  memorySize: 256\r\n  environment:\r\n    # Database (PostgreSQL connection to Supabase)\r\n    DATABASE_URL: ${env:DATABASE_URL}\r\n    \r\n    # JWT - using your actual secret names\r\n    JWT_ACCESS_SECRET: ${env:JWT_ACCESS_SECRET}\r\n    JWT_REFRESH_SECRET: ${env:JWT_REFRESH_SECRET}\r\n    \r\n    # S3 for file uploads\r\n    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME}\r\n    \r\n    # Email (Brevo SMTP)\r\n    BREVO_SMTP_USER: ${env:BREVO_SMTP_USER}\r\n    BREVO_SMTP_PASS: ${env:BREVO_SMTP_PASS}\r\n    BREVO_FROM_EMAIL: ${env:BREVO_FROM_EMAIL}\r\n    \r\n    # Frontend (will update after deployment)\r\n    FRONTEND_URL: ${env:FRONTEND_URL}\r\n    \r\n    # Node environment\r\n    NODE_ENV: production\r\n  iam:\r\n    role: arn:aws:iam::800417964439:role/wealthsmart-lambda-role\r\n\r\nfunctions:\r\n  api:\r\n    handler: lambda.handler\r\n    events:\r\n      - httpApi:\r\n          method: ANY\r\n          path: /{proxy+}\r\n\r\noutputs:\r\n  ApiEndpoint:\r\n    description: \"API Gateway endpoint URL\"\r\n    value:\r\n      Fn::GetAtt: [HttpApi, ApiEndpoint]",
+    "command": [
+      "info"
+    ],
+    "options": {},
+    "orgId": "62e8ff65-1510-4582-b063-c0a8821a6bcd",
+    "orgName": "wealthsmart",
+    "userId": "1XGXM9xK3ZfkmSwVWs",
+    "userName": "wealthsmart",
+    "serviceProviderAwsAccountId": "800417964439",
+    "serviceProviderAwsCfStackName": "wealthsmart-backend-dev",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:800417964439:stack/wealthsmart-backend-dev/7ce7ec10-59b6-11f1-907d-0e5ee79b9fe1",
+    "serviceProviderAwsCfStackCreated": "2026-05-27T10:26:14.089Z",
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": "CREATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "ApiLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:us-east-1:800417964439:function:wealthsmart-backend-dev-api:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-wealthsmart-backend-dev-ApiLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "HttpApiId",
+        "OutputValue": "efidvvi1g8",
+        "Description": "Id of the HTTP API",
+        "ExportName": "sls-wealthsmart-backend-dev-HttpApiId"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-us-east-1-57d6a695-9def",
+        "ExportName": "sls-wealthsmart-backend-dev-ServerlessDeploymentBucketName"
+      },
+      {
+        "OutputKey": "HttpApiUrl",
+        "OutputValue": "https://efidvvi1g8.execute-api.us-east-1.amazonaws.com",
+        "Description": "URL of the HTTP API",
+        "ExportName": "sls-wealthsmart-backend-dev-HttpApiUrl"
+      }
+    ]
+  }
+}
