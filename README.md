@@ -33,6 +33,13 @@ Built with developer efficiency in mind, leveraging AI assistance for boilerplat
 
 - This is a practice migration to cloud of my personal project, I have to make the services as free as possible but still running as intended without spin downs and also to see if my interest in cloud would go further.
 
+## ⚠️ Important
+
+The `.env.example` uses development defaults. For production:
+- Change all secrets (JWT secrets should be 32+ chars)
+- Set `FRONTEND_URL` to your actual domain
+- Use real Brevo SMTP credentials
+- Never commit real `.env` files
 
 ### CI/CD (optional, if implemented)
 - Manual deployment via AWS CLI / GitHub Actions
@@ -54,10 +61,4 @@ cd frontend
 npm install
 npm run dev
 
-## ⚠️ Important
 
-The `.env.example` uses development defaults. For production:
-- Change all secrets (JWT secrets should be 32+ chars)
-- Set `FRONTEND_URL` to your actual domain
-- Use real Brevo SMTP credentials
-- Never commit real `.env` files
