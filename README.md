@@ -54,3 +54,10 @@ cd frontend
 npm install
 npm run dev
 
+## ⚠️ Important
+
+The `.env.example` uses development defaults. For production:
+- Change all secrets (JWT secrets should be 32+ chars)
+- Set `FRONTEND_URL` to your actual domain
+- Use real Brevo SMTP credentials
+- Never commit real `.env` files
